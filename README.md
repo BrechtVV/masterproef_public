@@ -5,7 +5,8 @@ This github repository contains a Python project with two main functionalities:
 * A module to detect cyclists in video footage, analyse his/her (aerodynamic) features and compare different bike positions.
 
 ## Google Colab
-Here is the link to the Google Colab environment with everything installed automatically: https://colab.research.google.com/drive/1KuWQkUIdeqpMbnTfR-sVYJmceoB8hpE7?usp=sharing
+Here is the link to the Google Colab environment with everything installed automatically: 
+[masterproef_public on Google Colab](https://colab.research.google.com/drive/1KuWQkUIdeqpMbnTfR-sVYJmceoB8hpE7?usp=sharing)
 
 ## Installation
 1. Download and install Python3 (https://www.python.org/downloads/). 
@@ -18,17 +19,17 @@ Here is the link to the Google Colab environment with everything installed autom
 The code is runned on a dataset concluding the necessary output files of the tested libraries. Therefor different Google Colab notebooks are created to generate this code. In this way the data can be imported to compare metrics like accuracy, true positive rate, predicted area.
 
 We made a comparison between following pose estimation libraries:
-* [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose)
-* [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose)
-* [Detectron2](https://github.com/facebookresearch/detectron2)
-* [tf-pose-estimation](https://github.com/ildoonet/tf-pose-estimation)
+* [AlphaPose](https://github.com/MVIG-SJTU/AlphaPose) -> [AlphaPose Colab](https://colab.research.google.com/drive/1AAWMKqp8-ZBTho6Uj_nDHpw_ZBO6V4Xd?usp=sharing)
+* [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) -> [OpenPose Colab](https://colab.research.google.com/drive/1jAblOiQtcMAHgoOhlRgZgfTalpnDUuOv?usp=sharing)
+* [Detectron2](https://github.com/facebookresearch/detectron2) -> [Detectron2 Colab](https://colab.research.google.com/drive/1Fodg_6-X8Secz5S81v1B8FNpM_tC2OXd?usp=sharing)
+* [tf-pose-estimation](https://github.com/ildoonet/tf-pose-estimation) -> [tf-pose-estimation Colab](https://colab.research.google.com/drive/1h-6HNB3eIoO0gJGoZgJxu2_095uw0AfU?usp=sharing)
 
 We made a comparison between following person segmentation libraries:
-* [DensePose](https://github.com/facebookresearch/DensePose)
-* [Detectron2](https://github.com/facebookresearch/detectron2) instance segmentation
-* [Detectron2](https://github.com/facebookresearch/detectron2) instance segmentation with a extension of the helmet mask (detected as sportsball)
-* [Detectron2](https://github.com/facebookresearch/detectron2) panoptic segmentation
-* [PersonLab](https://github.com/scnuhealthy/Tensorflow_PersonLab)
+* [DensePose](https://github.com/facebookresearch/DensePose) -> [DensePose Colab](https://colab.research.google.com/drive/1z5ZOAg2mFBAXdC5EN4vwn6VPM25SOkay?usp=sharing)
+* [Detectron2](https://github.com/facebookresearch/detectron2) instance segmentation -> [Detectron2 Colab](https://colab.research.google.com/drive/1Fodg_6-X8Secz5S81v1B8FNpM_tC2OXd?usp=sharing)
+* [Detectron2](https://github.com/facebookresearch/detectron2) instance segmentation with a extension of the helmet mask (detected as sportsball) 
+* [Detectron2](https://github.com/facebookresearch/detectron2) panoptic segmentation -> [Detectron2 Colab](https://colab.research.google.com/drive/1Fodg_6-X8Secz5S81v1B8FNpM_tC2OXd?usp=sharing)
+* [PersonLab](https://github.com/scnuhealthy/Tensorflow_PersonLab) -> [PersonLab Colab](https://colab.research.google.com/drive/1R1VgF-Q67cE9xbV23oZx3oTj4mp-YyN_?usp=sharing)
 
 Of course you are free to test more libraries and include them in the comparison.
 
