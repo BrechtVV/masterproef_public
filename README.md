@@ -4,12 +4,14 @@ This github repository contains a Python project with two main functionalities:
 * A module to compare the results of different pose estimation and person segmentation libraries.
 * A module to detect cyclists in video footage, analyse his/her (aerodynamic) features and compare different bike positions.
 
+## Google Colab
+Here is the link to the Google Colab environment with everything installed automatically: https://colab.research.google.com/drive/1KuWQkUIdeqpMbnTfR-sVYJmceoB8hpE7?usp=sharing
+
 ## Installation
 1. Download and install Python3 (https://www.python.org/downloads/). 
 2. Append Python to the system path.
 3. Install Python packages: numpy, matplotlib, opencv-python
 4. For detectron usage install package like described in [detectron_instal.md](project/detectron_env/detectron_install.md)
-
 
 ## Setup
 
