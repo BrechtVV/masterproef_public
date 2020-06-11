@@ -98,7 +98,7 @@ def evaluate_keypoint_distances(keypoint, ground_truth_folder, data_folder, thre
     files = sorted(os.listdir(ground_truth_folder))
 
     if img_set is not None:
-        files = [f for f in files if f.split("_")[0] in img_set]
+        files = [f for f in files if any(ext in f for ext in img_set)]
 
     ground_truth_n = 0 
     # Counter for the number of keypoints that are expected to be predicted

@@ -13,18 +13,20 @@ class CycloComparer:
     segmentation_folder         =   None
     mask_interest_folder        =   None
     analyse_rate                =   None
+    img_set                     =   None
 
 
     def __init__(self):
         self.detector = CycloDetector()
 
     
-    def setup(self, data_folder, analyse_rate, pose_estimation_folder=None, segmentation_folder=None, mask_interest_folder=None):        
+    def setup(self, data_folder, analyse_rate, pose_estimation_folder=None, segmentation_folder=None, mask_interest_folder=None, img_set=None):        
         self.data_folder = data_folder
         self.pose_estimation_folder = pose_estimation_folder
         self.segmentation_folder = segmentation_folder
         self.mask_interest_folder = mask_interest_folder
         self.analyse_rate = int(analyse_rate)
+        self.img_set = img_set
 
     def compare(self, visualize=True, plot_path="plots/"):
         if not os.path.exists(plot_path):
@@ -37,6 +39,8 @@ class CycloComparer:
         tracing_points = {}
         
         files = sorted(os.listdir(self.data_folder))
+        if self.img_set is not None:
+            files = [f for f in files if any(ext in f for ext in self.img_set)]
         
         for f in files:
             name = f.split(".")[0]
@@ -45,7 +49,7 @@ class CycloComparer:
             start_an_time = time.time()
             orientation, a, tracks, angles, vis = self.detector.analyse(vis_path=os.path.join(plot_path,"vis_"+f))
             end_an_time = time.time()
-            print('\t {:-10s} : {:10f}'.format(name, round(end_an_time-start_an_time, 2)))
+            print('\t {:10s} : {:10f}'.format(name, round(end_an_time-start_an_time, 2)))
             if a is not None:
                 area[name] = a
             

@@ -54,7 +54,7 @@ def evaluate_masks(ground_truth_folder, data_folder, img_set=None):
     metrics = {}
     files = sorted(os.listdir(data_folder))[:]
     if img_set is not None:
-        files = [f for f in files if f.split("_")[0] in img_set]
+        files = [f for f in files if any(ext in f for ext in img_set)]
 
     for f in files:
         gt_mask_path = os.path.join(ground_truth_folder, f)
