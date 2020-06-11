@@ -110,6 +110,7 @@ python3 project/code/main_analyse.py DATA/dataset_videos/videos/
     --mask-interest-folder DATA/dataset_videos/mask_interest/
     --plot-folder plots
     --analyse-rate 30
+    --img-set front side
 ```
 
 ## Run analysis and comparison between videos using detectron2
@@ -120,4 +121,5 @@ python3 project/code/main_analyse.py DATA/dataset_videos/videos/
     --mask-interest-folder DATA/dataset_videos/mask_interest/
     --plot-folder plots
     --analyse-rate 30
+    --img-set front side
 ```
