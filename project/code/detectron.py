@@ -19,7 +19,7 @@ from detectron2.data import MetadataCatalog
 #import other utilities
 import os
 
-from constants import DETECTRON_DEVICE
+from config import DETECTRON_DEVICE
 
 class Detectron:
 
@@ -90,12 +90,13 @@ class Detectron:
         
         ##create list of id's who are the person...
         ids = [seg["id"] for seg in segments_info if seg["category_id"] == 0]
-        pan = np.array(panoptic_seg)
+        pan = np.array(panoptic_seg.to("cpu"))
         mask = np.zeros(img.shape, dtype=int)
         for c in range(3):
             mask[:,:,c] = np.where(np.isin(pan, ids), 255.0, 0.0)
         cv2.imwrite("temp.jpg", mask)
         mask = cv2.imread("temp.jpg", cv2.IMREAD_GRAYSCALE)
+        os.remove("temp.jpg")
         ret, mask = cv2.threshold(mask,127,255,cv2.THRESH_BINARY)
         return mask
 
