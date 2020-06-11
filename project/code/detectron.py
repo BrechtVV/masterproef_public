@@ -19,6 +19,7 @@ from detectron2.data import MetadataCatalog
 #import other utilities
 import os
 
+from constants import DETECTRON_DEVICE
 
 class Detectron:
 
@@ -30,9 +31,9 @@ class Detectron:
     pan_cfg             = None
     device              = None
 
-    def __init__(self, device):
+    def __init__(self):
         super().__init__()
-        self.device = device
+        self.device = DETECTRON_DEVICE
         self.setup_kps_predictor()
         #self.setup_mask_predictor()
         self.setup_pan_predictor()

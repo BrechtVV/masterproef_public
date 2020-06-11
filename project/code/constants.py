@@ -1,28 +1,20 @@
 STD_FRONT_THRESHOLD = 10
 DEFAULT_MASK_SHAPE = (720, 1280, 1)
-#SKIP_FRAMES = 10
 KPS_DIST_THRESHOLD = 5
-
 MASK_BOX_EXPAND = 0.05
 
+
 KEYPOINTS  =    ["Nose","Neck","RShoulder","RElbow","RWrist","LShoulder","LElbow","LWrist","RHip","RKnee","RAnkle","LHip","LKnee","LAnkle","REye","LEye","REar","LEar"]
-keypoints = KEYPOINTS
+EVAL_KEYPOINTS = ["Nose","Neck","RShoulder","RElbow","RWrist","LShoulder","LElbow","LWrist","RHip","RKnee","RAnkle","LHip","LKnee","LAnkle"]
+UPPER_BODY =    ["Nose","Neck","RShoulder","RElbow","RWrist","LShoulder","LElbow","LWrist"]
+LOWER_BODY =    ["RHip","RKnee","RAnkle","LHip","LKnee","LAnkle"]
+STABLE_BODY =   UPPER_BODY + ["RHip", "LHip"]
 
-eval_keypoints = ["Nose","Neck","RShoulder","RElbow","RWrist","LShoulder","LElbow","LWrist","RHip","RKnee","RAnkle","LHip","LKnee","LAnkle"]
+KPS_GROUPS =    { "All" : KEYPOINTS, "SBody": STABLE_BODY }
+for kp in EVAL_KEYPOINTS:
+    KPS_GROUPS[kp] = [kp]
 
-
-upper_body =    ["Nose","Neck","RShoulder","RElbow","RWrist","LShoulder","LElbow","LWrist"]
-lower_body =    ["RHip","RKnee","RAnkle","LHip","LKnee","LAnkle"]
-stable_body =   upper_body + ["RHip", "LHip"]
-
-#kps_groups =    { "All" : keypoints, "UBody" : upper_body, "LBody" : lower_body, "SBody": stable_body }
-KPS_GROUPS =    { "All" : keypoints, "SBody": stable_body }
-kps_groups = KPS_GROUPS
-
-for kp in eval_keypoints:
-    kps_groups[kp] = [kp]
-
-kps_skeleton = [
+KPS_SKELETON = [
                 ["LWrist", "LElbow", "LShoulder", "Neck"],
                 ["RWrist", "RElbow", "RShoulder", "Neck"],
                 ["LAnkle", "LKnee", "LHip", "Neck"],
@@ -34,11 +26,6 @@ KPS_LEFT =      ["LWrist", "LElbow", "LShoulder", "LAnkle", "LKnee", "LHip", "LE
 KPS_RIGHT =     ["RWrist", "RElbow", "RShoulder", "RAnkle", "RKnee", "RHip", "REar", "REye"]
 KPS_CENTER =    ["Neck", "Nose"]
 
-kps_left = KPS_LEFT
-kps_right = KPS_RIGHT
-kps_center = KPS_CENTER
-
-
 KPS_ANGLES = {
     "LHip_Angle"        : ["LKnee", "LHip", "LShoulder"],
     "LKnee_Angle"       : ["LAnkle", "LKnee", "LHip"],
@@ -49,7 +36,6 @@ KPS_ANGLES = {
     "RShoulder_Angle"   : ["RHip", "RShoulder", "RElbow"],
     "RElbow_Angle"      : ["RShoulder", "RElbow", "RWrist"],
 }
-kps_angles = KPS_ANGLES
 
 
 def get_vis_color(lib):

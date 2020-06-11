@@ -2,4 +2,6 @@
 ANALYSE_RATE = 1
 
 # path to save the output of the detectron2 processing, will be used as a cache when analysing videos
+DETECTRON_DEVICE = "cpu"
+#DETECTRON_DEVICE = "gpu"
 DETECTRON_PATH = "/home/brecht/Videos/THESIS_VIDEOS/detectron2_cpu/"

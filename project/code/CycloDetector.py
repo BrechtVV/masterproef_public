@@ -7,7 +7,6 @@ import json
 import shutil
 
 from config import DETECTRON_PATH
-from constants import kps_angles
 from get_data import get_mask, get_keypoints, get_orientation, get_area, get_angle
 from vis import draw_skeleton, draw_angle
 

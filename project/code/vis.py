@@ -1,13 +1,13 @@
 import cv2
 import os
 import numpy as np
-from get_data import *
-from constants import *
+from get_data import get_keypoints, bounding_box_based_on_keypoints
+from constants import get_vis_color, KPS_SKELETON, KPS_DIST_THRESHOLD, KPS_ANGLES
 
 
 def draw_keypoints(img, kps):
     img = np.copy(img)
-    for line in kps_skeleton:
+    for line in KPS_SKELETON:
         for a, b in zip(line, line[1:]):
             if a in kps and b in kps:
                 pt1 = (int(kps[a][0]),int(kps[a][1]))
@@ -92,9 +92,9 @@ def visualize_masks(gt, data, box):
 
 
 def draw_angle(angle, kps, frame):
-    a = np.array([ int(kps[kps_angles[angle][0]][0]) , int(kps[kps_angles[angle][0]][1]) ])
-    b = np.array([ int(kps[kps_angles[angle][1]][0]) , int(kps[kps_angles[angle][1]][1]) ])
-    c = np.array([ int(kps[kps_angles[angle][2]][0]) , int(kps[kps_angles[angle][2]][1]) ])
+    a = np.array([ int(kps[KPS_ANGLES[angle][0]][0]) , int(kps[KPS_ANGLES[angle][0]][1]) ])
+    b = np.array([ int(kps[KPS_ANGLES[angle][1]][0]) , int(kps[KPS_ANGLES[angle][1]][1]) ])
+    c = np.array([ int(kps[KPS_ANGLES[angle][2]][0]) , int(kps[KPS_ANGLES[angle][2]][1]) ])
     ba = a - b
     bc = c - b
     cosine_angle = np.dot(ba, bc) / (np.linalg.norm(ba) * np.linalg.norm(bc))
