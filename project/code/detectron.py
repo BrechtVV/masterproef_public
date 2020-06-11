@@ -28,9 +28,11 @@ class Detectron:
     kps_cfg             = None
     pan_predictor       = None
     pan_cfg             = None
+    device              = None
 
-    def __init__(self):
+    def __init__(self, device):
         super().__init__()
+        self.device = device
         self.setup_kps_predictor()
         #self.setup_mask_predictor()
         self.setup_pan_predictor()
@@ -38,7 +40,7 @@ class Detectron:
     def setup_mask_predictor(self):
         ## INSTANCE SEGMENTATION
         self.mask_cfg = get_cfg()
-        self.mask_cfg.MODEL.DEVICE='cpu'
+        self.mask_cfg.MODEL.DEVICE=self.device
         # add project-specific config (e.g., TensorMask) here if you're not running a model in detectron2's core library
         self.mask_cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
         self.mask_cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5  # set threshold for this model
@@ -51,7 +53,7 @@ class Detectron:
         ## KEYPOINTS
         # Inference with a keypoint detection model
         self.kps_cfg = get_cfg()
-        self.kps_cfg.MODEL.DEVICE='cpu'
+        self.kps_cfg.MODEL.DEVICE=self.device
         self.kps_cfg.merge_from_file(model_zoo.get_config_file("COCO-Keypoints/keypoint_rcnn_R_50_FPN_3x.yaml"))
         self.kps_cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # set threshold for this model
         self.kps_cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Keypoints/keypoint_rcnn_R_50_FPN_3x.yaml")
@@ -62,7 +64,7 @@ class Detectron:
         ## PANOPTIC SEGMENTATION
         # Inference with a panoptic segmentation model
         self.pan_cfg = get_cfg()
-        self.pan_cfg.MODEL.DEVICE='cpu'
+        self.pan_cfg.MODEL.DEVICE=self.device
         self.pan_cfg.merge_from_file(model_zoo.get_config_file("COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml"))
         self.pan_cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-PanopticSegmentation/panoptic_fpn_R_101_3x.yaml")
         self.pan_predictor = DefaultPredictor(self.pan_cfg)

@@ -43,7 +43,7 @@ class CycloDetector:
         self.pose_estimation_folder = pose_estimation_folder
         self.segmentation_folder = segmentation_folder 
         self.mask_interest_folder = mask_interest_folder
-        self.analyse_rate = analyse_rate
+        self.analyse_rate = int(analyse_rate)
         self.mask_interest = None 
         
         self.frame_number = 0

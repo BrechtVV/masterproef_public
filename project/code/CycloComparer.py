@@ -24,7 +24,7 @@ class CycloComparer:
         self.pose_estimation_folder = pose_estimation_folder
         self.segmentation_folder = segmentation_folder
         self.mask_interest_folder = mask_interest_folder
-        self.analyse_rate = analyse_rate
+        self.analyse_rate = int(analyse_rate)
 
     def compare(self, visualize=True, plot_path="plots/"):
         if not os.path.exists(plot_path):
@@ -41,12 +41,11 @@ class CycloComparer:
         for f in files:
             name = f.split(".")[0]
             path = os.path.join(self.data_folder, f)
-            print(name)
             self.detector.setup(path,self.analyse_rate, self.pose_estimation_folder, self.segmentation_folder, self.mask_interest_folder)
             start_an_time = time.time()
             orientation, a, tracks, angles, vis = self.detector.analyse(vis_path=os.path.join(plot_path,"vis_"+f))
             end_an_time = time.time()
-            print('\t {:10s} : {:10f}'.format(name, round(end_an_time-start_an_time, 2)))
+            print('\t {:-10s} : {:10f}'.format(name, round(end_an_time-start_an_time, 2)))
             if a is not None:
                 area[name] = a
             
